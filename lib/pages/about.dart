@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:my_site/pages/builder.dart';
 
 class AboutPage extends StatefulWidget {
   const AboutPage({super.key});
@@ -10,6 +11,52 @@ class AboutPage extends StatefulWidget {
 }
 
 class _AboutPageState extends State<AboutPage> {
+  _email() {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return CupertinoAlertDialog(
+          title: Text("My Email", style: GoogleFonts.montserrat(),),
+          content: Text("@ergashboeviftixor@gmail.com", style: GoogleFonts.montserrat(textStyle: TextStyle(
+            fontWeight: FontWeight.bold
+          )),),
+          actions: <CupertinoDialogAction>[
+            CupertinoDialogAction(
+              child: Text("Good!", style: GoogleFonts.montserrat(textStyle: TextStyle(
+                color: CupertinoColors.systemBlue
+              )),),
+              onPressed: () {
+                Navigator.pop(context);
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
+  _phone() {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return CupertinoAlertDialog(
+          title: Text("My Phone number", style: GoogleFonts.montserrat(),),
+          content: Text("+998 50 221 01 27", style: GoogleFonts.montserrat(textStyle: TextStyle(
+            fontWeight: FontWeight.bold
+          )),),
+          actions: <CupertinoDialogAction>[
+            CupertinoDialogAction(
+              child: Text("Good!", style: GoogleFonts.montserrat(textStyle: TextStyle(
+                color: CupertinoColors.activeBlue
+              )),),
+              onPressed: () {
+                Navigator.pop(context);
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -159,7 +206,9 @@ class _AboutPageState extends State<AboutPage> {
                   backgroundColor: CupertinoColors.activeGreen,
                   minimumSize: Size(100, 50),
                 ),
-                  onPressed: () {}, child: Row(
+                  onPressed: () {
+                  _phone();
+                  }, child: Row(
                   children: [
                     Icon(CupertinoIcons.phone, color: Colors.white, size: 20),
                     SizedBox(width: 120),
@@ -173,7 +222,9 @@ class _AboutPageState extends State<AboutPage> {
                   backgroundColor: CupertinoColors.systemTeal,
                   minimumSize: Size(100, 50),
                 ),
-                  onPressed: () {}, child: Row(
+                  onPressed: () {
+                  _email();
+                  }, child: Row(
                     children: [
                       Icon(CupertinoIcons.quote_bubble_fill, color: Colors.white, size: 20),
                       SizedBox(width: 120),
@@ -182,21 +233,25 @@ class _AboutPageState extends State<AboutPage> {
                       )),
                     ],
                   ),),
-                SizedBox(height: 5),
-                Text("Siz buni ko'rdingiz:", style: GoogleFonts.montserrat(
-                  textStyle: TextStyle(fontSize: 15, color: CupertinoColors.activeBlue),
-                )),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text("1", style: GoogleFonts.montserrat(
-                      textStyle: TextStyle(color: Colors.black, fontSize: 15, fontWeight: FontWeight.bold),
-                    )),
-                    SizedBox(width: 5),
-                    Icon(CupertinoIcons.eye, color: CupertinoColors.activeBlue, size: 15),
-                  ],
+                SizedBox(height: 20),
+                Center(
+                  child: InkWell(
+                    onTap: () {
+                      Navigator.push(context, CupertinoPageRoute(builder: (context) => BuilderPage()));
+                    },
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text("Open Builder", style: GoogleFonts.montserrat(
+                          textStyle: TextStyle(fontSize: 15, fontWeight: FontWeight.bold, color: CupertinoColors.activeBlue),
+                        )),
+                        Image.asset('assets/images/builder.png', width: 15, height: 15)
+                      ],
+                    ),
+                  ),
                 ),
               ],
+              mainAxisAlignment: MainAxisAlignment.center,
             ),
           ),
         ],
