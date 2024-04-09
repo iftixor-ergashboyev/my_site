@@ -33,7 +33,7 @@ class _BuilderPageState extends State<BuilderPage> {
             Text("Cupertino iOS style'dan foydalanildi.", style: GoogleFonts.montserrat(
                 textStyle: TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 10)
             )),
-            Text("Bu sahifa Versel.com'ga kiritildi", style: GoogleFonts.montserrat(
+            Text("Bu sahifa Google Drive'ga kiritildi", style: GoogleFonts.montserrat(
                 textStyle: TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 10)
             )),
             SizedBox(height: 10),
